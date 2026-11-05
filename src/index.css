@@ -2901,3 +2901,10 @@ footer,
     border-radius: 14px;
   }
 }
+
+
+.case-home,
+.case-header button,
+.principles-switcher-arrow {
+  border-radius: 10px;
+}
