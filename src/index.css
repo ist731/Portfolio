@@ -2794,3 +2794,110 @@ footer a {
   }
 
 }
+
+
+/* Keep the original superellipse treatment while sizing corners to each component. */
+@supports (corner-shape: superellipse(2)) {
+  * {
+    corner-shape: superellipse(2);
+  }
+}
+
+.nav-icon,
+.menu-toggle,
+.project-logo,
+.experience-logo,
+.dialog-close {
+  border-radius: 10px;
+}
+
+.nav-links {
+  border-radius: 14px;
+}
+
+.nav-links a,
+.project-segment-item,
+.project-dialog article div button,
+.case-footer button,
+.case-footer a {
+  border-radius: 10px;
+}
+
+.project-segment {
+  border-radius: 12px;
+}
+
+.project-image,
+.project-card:focus-visible {
+  border-radius: 20px;
+}
+
+.experience-panel,
+.principles-panel,
+.awards-panel,
+.hero-frame,
+.principle-space,
+.principle-message,
+footer,
+.project-dialog article {
+  border-radius: 32px;
+}
+
+.experience-focus-card,
+.detail-card,
+.principle-card,
+.award-item,
+.experience-company-link {
+  border-radius: 20px;
+}
+
+.principles-switcher,
+.principles-cloud,
+.principles-tag,
+.experience-company-arrow,
+.experience-logo,
+.focus-card-values span {
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .hero-frame,
+  .experience-panel,
+  .principles-panel,
+  .awards-panel,
+  .principle-space,
+  .principle-message,
+  footer,
+  .project-dialog article {
+    border-radius: 24px;
+  }
+
+  .project-image,
+  .experience-focus-card,
+  .detail-card,
+  .principle-card,
+  .award-item {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-frame,
+  .experience-panel,
+  .principles-panel,
+  .awards-panel,
+  .principle-space,
+  .principle-message,
+  footer,
+  .project-dialog article {
+    border-radius: 20px;
+  }
+
+  .project-image,
+  .experience-focus-card,
+  .detail-card,
+  .principle-card,
+  .award-item {
+    border-radius: 14px;
+  }
+}
