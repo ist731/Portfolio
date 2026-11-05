@@ -237,7 +237,7 @@
   padding: 12px 40px;
   overflow: hidden;
   border-radius: 19px;
-  corner-shape: round;
+
   background: linear-gradient(110deg, #a91c10 0%, #dc3019 48%, #b61e11 100%);
   box-shadow: inset 0 0 18px rgb(255 255 255 / 17%);
   color: #fff;
@@ -253,7 +253,7 @@
   position: absolute;
   z-index: 0;
   inset: -95% -24%;
-  border-radius: 50%;
+  border-radius: 12px;
   content: '';
   pointer-events: none;
   will-change: transform;
@@ -360,7 +360,7 @@
   gap: 4px;
   padding: 4px;
   border-radius: 10px;
-  corner-shape: round;
+
   background: #f7f7f7;
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 4%);
 }
@@ -370,7 +370,7 @@
   flex: 1;
   padding: 8px 16px;
   border-radius: 7px;
-  corner-shape: round;
+
   background: transparent;
   color: #000;
   cursor: pointer;
@@ -865,7 +865,7 @@
   place-items: center;
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  border-radius: 12px;
   background: transparent;
   color: #555;
   cursor: pointer;
@@ -935,7 +935,7 @@
   top: 0;
   bottom: 0;
   width: clamp(28px, 7vw, 56px);
-  border-radius: inherit;
+  border-radius: 16px;
   content: '';
   pointer-events: none;
 }
@@ -1121,7 +1121,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  border-radius: inherit;
+  border-radius: 88px;
   content: '';
   pointer-events: none;
   transition: opacity 320ms ease, transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1618,7 +1618,7 @@
   width: 100%;
   height: 100%;
   padding: 0;
-  border-radius: inherit;
+  border-radius: 12px;
   background: transparent;
   object-fit: contain;
 }
@@ -2242,8 +2242,8 @@ footer a {
   width: 44px;
   height: 44px;
   place-items: center;
-  border-radius: 50%;
-  corner-shape: round;
+  border-radius: 12px;
+
   background: #f0f0f0;
   cursor: pointer;
   font-size: 24px;
@@ -2798,15 +2798,12 @@ footer a {
 
 
 /* Shared radius and spacing scale */
+
+@supports (corner-shape: superellipse(2)) {
+  * { corner-shape: superellipse(2); }
+}
+
 :root {
-  --radius-chip: 8px;
-  --radius-control: 12px;
-  --radius-menu: 16px;
-  --radius-callout: 16px;
-  --radius-project: 12px;
-  --radius-domain: 48px;
-  --radius-cloud: 88px;
-  --radius-section: 96px;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -2821,62 +2818,61 @@ footer a {
   --space-section: var(--space-16);
 }
 
-@supports (corner-shape: superellipse(2)) {
-  * { corner-shape: superellipse(2); }
-}
+
 
 /* Navigation and its controls */
 .floating-nav { gap: var(--space-2); }
-.nav-icon, .menu-toggle { border-radius: var(--radius-control); }
+.nav-icon,
+.menu-toggle { border-radius: 12px; }
 .nav-links {
   gap: var(--space-1);
   padding: var(--space-1);
-  border-radius: var(--radius-menu);
+  border-radius: 16px;
 }
 .nav-links a {
   padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-control);
+  border-radius: 12px;
 }
 
 /* Hero and project cards */
 .hero { padding: var(--space-2); }
-.hero-frame { border-radius: var(--radius-section); }
+.hero-frame { border-radius: 96px; }
 .statement { padding: 0 var(--space-2) var(--space-2); }
 .statement p {
   padding: var(--space-3) var(--space-10);
-  border-radius: var(--radius-callout);
+  border-radius: 40px;
 }
 .projects-grid { gap: var(--space-8) var(--space-6); }
-.project-image, .project-card:focus-visible, .project-overlay > span {
-  border-radius: var(--radius-project);
-}
-.project-logo { border-radius: var(--radius-control); }
+.project-image,
+.project-card:focus-visible,
+.project-overlay > span { border-radius: 12px; }
+.project-logo { border-radius: 12px; }
 .project-copy { gap: var(--space-3); padding-top: var(--space-3); }
 
 /* Experience, domains, awards, and principles */
 .experience { padding-block: var(--space-12) 0; }
 .experience-panel {
   padding: var(--space-section);
-  border-radius: var(--radius-section);
+  border-radius: 96px;
 }
 .experience-focus-card {
   gap: var(--space-6);
   padding: var(--space-8);
-  border-radius: var(--radius-domain);
+  border-radius: 48px;
 }
 .focus-card-values { gap: var(--space-2); }
 .focus-card-values span {
   padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-chip);
+  border-radius: 8px;
 }
 .awards-panel {
   padding: var(--space-section);
-  border-radius: var(--radius-section);
+  border-radius: 96px;
 }
 .principles-section { padding-block: var(--space-24); }
 .principles-panel {
   padding: var(--space-2);
-  border-radius: var(--radius-section);
+  border-radius: 96px;
 }
 .principles-layout { gap: var(--space-12); }
 .principles-copy-column { padding: var(--space-8) 0 var(--space-8) var(--space-8); }
@@ -2885,23 +2881,27 @@ footer a {
   gap: var(--space-2);
   margin-bottom: var(--space-8);
   padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-menu);
+  border-radius: 16px;
 }
-.principles-switcher-arrow { border-radius: var(--radius-control); }
+.principles-switcher-arrow { border-radius: 12px; }
 .principles-cloud {
   padding: var(--space-section);
-  border-radius: var(--radius-cloud);
+  border-radius: 88px;
 }
-.principles-tag { border-radius: var(--radius-chip); }
+.principles-tag { border-radius: 8px; }
 
 /* Case page, details, and footer controls */
-.case-home, .case-header button, .case-footer button, .case-footer a,
-.project-dialog article div button, .dialog-close {
-  border-radius: var(--radius-control);
+.case-home,
+.case-header button,
+.case-footer button,
+.case-footer a,
+.project-dialog article div button,
+.dialog-close {
+  border-radius: 12px;
 }
-.case-hero { border-radius: var(--radius-section); }
+.case-hero { border-radius: 96px; }
 .detail-card { padding: var(--space-8); }
-footer { padding-block: var(--space-8); border-radius: var(--radius-section); }
+footer { padding-block: var(--space-8); border-radius: 96px; }
 
 @media (max-width: 900px) {
   :root { --space-section: var(--space-12); }
@@ -2912,8 +2912,8 @@ footer { padding-block: var(--space-8); border-radius: var(--radius-section); }
   .experience-focus-card { padding: var(--space-6); }
   .principles-section { padding-block: var(--space-16); }
   .principles-layout { gap: var(--space-6); }
-  .principles-copy-column, .principles-cloud { padding: var(--space-6); }
-  .experience-focus-card { padding: var(--space-6); }
+  .principles-copy-column { padding: var(--space-6); }
+  .principles-cloud { padding: var(--space-6); }
   .statement p { padding-inline: var(--space-6); }
   .projects-grid { gap: var(--space-6); }
 }
