@@ -2796,115 +2796,123 @@ footer a {
 }
 
 
-/* Keep the original superellipse treatment while sizing corners to each component. */
+
+/* Shared radius and spacing scale */
+:root {
+  --radius-chip: 8px;
+  --radius-control: 12px;
+  --radius-menu: 16px;
+  --radius-callout: 16px;
+  --radius-project: 12px;
+  --radius-domain: 48px;
+  --radius-cloud: 88px;
+  --radius-section: 96px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-section: var(--space-16);
+}
+
 @supports (corner-shape: superellipse(2)) {
-  * {
-    corner-shape: superellipse(2);
-  }
+  * { corner-shape: superellipse(2); }
 }
 
-.nav-icon,
-.menu-toggle,
-.project-logo,
-.experience-logo,
-.dialog-close {
-  border-radius: 10px;
-}
-
+/* Navigation and its controls */
+.floating-nav { gap: var(--space-2); }
+.nav-icon, .menu-toggle { border-radius: var(--radius-control); }
 .nav-links {
-  border-radius: 14px;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border-radius: var(--radius-menu);
+}
+.nav-links a {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
 }
 
-.nav-links a,
-.project-segment-item,
-.project-dialog article div button,
-.case-footer button,
-.case-footer a {
-  border-radius: 10px;
+/* Hero and project cards */
+.hero { padding: var(--space-2); }
+.hero-frame { border-radius: var(--radius-section); }
+.statement { padding: 0 var(--space-2) var(--space-2); }
+.statement p {
+  padding: var(--space-3) var(--space-10);
+  border-radius: var(--radius-callout);
 }
-
-.project-segment {
-  border-radius: 12px;
+.projects-grid { gap: var(--space-8) var(--space-6); }
+.project-image, .project-card:focus-visible, .project-overlay > span {
+  border-radius: var(--radius-project);
 }
+.project-logo { border-radius: var(--radius-control); }
+.project-copy { gap: var(--space-3); padding-top: var(--space-3); }
 
-.project-image,
-.project-card:focus-visible {
-  border-radius: 20px;
+/* Experience, domains, awards, and principles */
+.experience { padding-block: var(--space-12) 0; }
+.experience-panel {
+  padding: var(--space-section);
+  border-radius: var(--radius-section);
 }
-
-.experience-panel,
-.principles-panel,
-.awards-panel,
-.hero-frame,
-.principle-space,
-.principle-message,
-footer,
-.project-dialog article {
-  border-radius: 32px;
+.experience-focus-card {
+  gap: var(--space-6);
+  padding: var(--space-8);
+  border-radius: var(--radius-domain);
 }
-
-.experience-focus-card,
-.detail-card,
-.principle-card,
-.award-item,
-.experience-company-link {
-  border-radius: 20px;
-}
-
-.principles-switcher,
-.principles-cloud,
-.principles-tag,
-.experience-company-arrow,
-.experience-logo,
+.focus-card-values { gap: var(--space-2); }
 .focus-card-values span {
-  border-radius: 12px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-chip);
 }
+.awards-panel {
+  padding: var(--space-section);
+  border-radius: var(--radius-section);
+}
+.principles-section { padding-block: var(--space-24); }
+.principles-panel {
+  padding: var(--space-2);
+  border-radius: var(--radius-section);
+}
+.principles-layout { gap: var(--space-12); }
+.principles-copy-column { padding: var(--space-8) 0 var(--space-8) var(--space-8); }
+.principles-heading { margin-bottom: var(--space-8); }
+.principles-switcher {
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-menu);
+}
+.principles-switcher-arrow { border-radius: var(--radius-control); }
+.principles-cloud {
+  padding: var(--space-section);
+  border-radius: var(--radius-cloud);
+}
+.principles-tag { border-radius: var(--radius-chip); }
+
+/* Case page, details, and footer controls */
+.case-home, .case-header button, .case-footer button, .case-footer a,
+.project-dialog article div button, .dialog-close {
+  border-radius: var(--radius-control);
+}
+.case-hero { border-radius: var(--radius-section); }
+.detail-card { padding: var(--space-8); }
+footer { padding-block: var(--space-8); border-radius: var(--radius-section); }
 
 @media (max-width: 900px) {
-  .hero-frame,
-  .experience-panel,
-  .principles-panel,
-  .awards-panel,
-  .principle-space,
-  .principle-message,
-  footer,
-  .project-dialog article {
-    border-radius: 24px;
-  }
-
-  .project-image,
-  .experience-focus-card,
-  .detail-card,
-  .principle-card,
-  .award-item {
-    border-radius: 16px;
-  }
+  :root { --space-section: var(--space-12); }
 }
 
 @media (max-width: 560px) {
-  .hero-frame,
-  .experience-panel,
-  .principles-panel,
-  .awards-panel,
-  .principle-space,
-  .principle-message,
-  footer,
-  .project-dialog article {
-    border-radius: 20px;
-  }
-
-  .project-image,
-  .experience-focus-card,
-  .detail-card,
-  .principle-card,
-  .award-item {
-    border-radius: 14px;
-  }
-}
-
-
-.case-home,
-.case-header button,
-.principles-switcher-arrow {
-  border-radius: 10px;
+  :root { --space-section: var(--space-8); }
+  .principles-section { padding-block: var(--space-16); }
+  .principles-layout { gap: var(--space-6); }
+  .principles-copy-column, .principles-cloud { padding: var(--space-6); }
+  .experience-focus-card { padding: var(--space-6); }
+  .statement p { padding-inline: var(--space-6); }
+  .projects-grid { gap: var(--space-6); }
 }
